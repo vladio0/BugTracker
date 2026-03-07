@@ -11,7 +11,35 @@
     <div class="container mt-5">
         <h1 class="text-center">Bug-tracker</h1>
 
-        <form th:action="@{/add}" th:object="${newTodo}" method="post" class="mb-3">
+        <form th:action="@{/add}" th:object="${newBug}" method="post" class="mb-3">
+            <input type="text" class="form-control mb-2"
+                   th:field="*{title}" placeholder="Bug title">
+
+            <input type="date" class="form-control mb-2"
+                   th:field="*{date}">
+
+            <input type="text" class="form-control mb-2"
+                   th:field="*{devName}" placeholder="Developer name">
+
+            <select class="form-control mb-2" th:field="*{status}">
+                <option value="open">Open</option>
+                <option value="in progress">In Progress</option>
+                <option value="fixed">Fixed</option>
+                <option value="closed">Closed</option>
+            </select>
+            <select class="form-control mb-2" th:field="*{priority}">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+                <option value="critical">Critical</option>
+            </select>
+
+            <select class="form-control mb-2" th:field="*{category}">
+                <option value="ui">UI</option>
+                <option value="frontend">Frontend</option>
+                <option value="backend">Backend</option>
+                <option value="security">Security</option>
+            </select>
             <div class="input-group">
                 <input type="text" class="form-control" th:field="*{title}" placeholder="Type your bug">
                 <button class="btn btn-primary" type="submit">Add</button>
@@ -25,18 +53,26 @@
         <form th:action="@{/search}" method="post" class="mb-3">
             <div class="input-group">
                 <input type="text" class="form-control" name="searchTerm" placeholder="Search Bugs" th:value="${searchTerm}">
-                <button class="btn btn-outline-secondary" type="submut">Search</button>
+                <button class="btn btn-outline-secondary" type="submit">Search</button>
             </div>
         </form>
 
  <ul class="list-group">
-    <li th:each="item : ${allTodos}" class="list-group-item d-flex justify-content-between align-items-center">
-     <span th:text="${item.title}"></span>
-        <form th:action="@{/delete/{id}(id=${item.id})}" method="post">
-            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-        </form>
+     <li th:each="item : ${allBugs}" class="list-group-item">
 
-    </li>
+         <b th:text="${item.title}"></b><br>
+
+         Date: <span th:text="${item.date}"></span><br>
+         Developer: <span th:text="${item.devName}"></span><br>
+         Status: <span th:text="${item.status}"></span><br>
+         Priority: <span th:text="${item.priority}"></span><br>
+         Category: <span th:text="${item.category}"></span>
+
+         <form th:action="@{/delete/{id}(id=${item.id})}" method="post" class="mt-2">
+             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+         </form>
+
+     </li>
  </ul>
 
     </div>
