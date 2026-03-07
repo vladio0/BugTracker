@@ -44,4 +44,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: vladio0/bugtracker:latest
+          tags: vladi0/bug_tracker:latest
