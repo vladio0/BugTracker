@@ -22,26 +22,25 @@
                    th:field="*{devName}" placeholder="Developer name">
 
             <select class="form-control mb-2" th:field="*{status}">
-                <option value="open">Open</option>
-                <option value="in progress">In Progress</option>
-                <option value="fixed">Fixed</option>
-                <option value="closed">Closed</option>
+                <option value="OPEN">Open</option>
+                <option value="IN_PROGRESS">In Progress</option>
+                <option value="FIXED">Fixed</option>
+                <option value="CLOSED">Closed</option>
             </select>
             <select class="form-control mb-2" th:field="*{priority}">
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-                <option value="critical">Critical</option>
+                <option value="LOW">Low</option>
+                <option value="MEDIUM">Medium</option>
+                <option value="HIGH">High</option>
+                <option value="CRITICAL">Critical</option>
             </select>
 
             <select class="form-control mb-2" th:field="*{category}">
-                <option value="ui">UI</option>
-                <option value="frontend">Frontend</option>
-                <option value="backend">Backend</option>
-                <option value="security">Security</option>
+                <option value="UI">UI</option>
+                <option value="FRONTEND">Frontend</option>
+                <option value="BACKEND">Backend</option>
+                <option value="SECURITY">Security</option>
             </select>
             <div class="input-group">
-                <input type="text" class="form-control" th:field="*{title}" placeholder="Type your bug">
                 <button class="btn btn-primary" type="submit">Add</button>
             </div>
  </form>
